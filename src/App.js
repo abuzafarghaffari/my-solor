@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import {Routes, Route} from "react-router-dom";
+import "./sass/main.scss";
 import './App.css';
-
+import Home from "./components/Home";
+import Mercuary from "./routes/Mercuary";
+import Navigation from "./components/Navigation";
+import Mars from "./routes/Mars";
+import Venus from "./routes/Venus";
+import Earth from "./routes/Earth";
+import Jupiter from "./routes/Jupiter";
+import Saturn from "./routes/Saturn";
+import Uranus from "./routes/Uranus";
+import Neptune from "./routes/Neptune";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Navigation />
+    <Routes>
+<Route path="/" element={<Home />}/>
+  <Route path ="/mercuary" element={<Mercuary />} />    
+  <Route path ="/venus" element={<Venus />} />    
+  <Route path ="/earth" element={<Earth />} />    
+  <Route path ="//mars" element={<Mars />} />    
+  <Route path ="/jupiter" element={<Jupiter />} />    
+  <Route path ="/saturn" element={<Saturn />} />    
+  <Route path ="/urnus" element={<Uranus />} />    
+  <Route path ="/neptune" element={<Neptune/>} />    
+   
+    </Routes>
     </div>
   );
 }

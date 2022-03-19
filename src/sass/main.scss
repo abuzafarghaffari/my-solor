@@ -1,0 +1,169 @@
+@import "custom";
+
+//circle
+@mixin circle($circleSize){
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:$circleSize;
+    height:$circleSize;
+    background: transparent;
+    border-radius: 50%;
+    border:2px solid #dbd9d9;
+
+}
+
+//line - orbit radius
+@mixin line($animation-name, $duration){
+    width:50%;
+    height: 2px;
+    background: transparent;
+    position: absolute;
+    top:calc(50% - 1px);
+    transform-origin: right;
+    animation: $animation-name $duration linear infinite;
+  //rotate line
+    @keyframes #{$animation-name} {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+    
+}
+// this will be planet
+@mixin line-before($X,$Y,$planetSize,$planetname,$backgroundColor) {
+    content: $planetname;
+    position: absolute;
+    width: $planetSize;
+    height: $planetSize;
+    background: $backgroundColor;
+    border-radius: 50%;
+    top:-50%;
+    transform: translateY($Y);
+    left:-50%;
+    transform: translateX($X);
+}
+
+
+.mercuary-orbit{
+ @include circle(8rem);
+transition: all;
+}
+
+.mercuary-radius{
+   @include line(animate ,20s);
+
+    //palnet-mercuary
+&::before{
+
+    @include line-before(80%,-50%,1.5rem,"Mercury",pink );
+    
+}
+
+//line-after =sun
+&::after{
+    content: "SUN";
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background: #f00;
+    border-radius: 50%;
+    top:-50%;
+    transform: translateY(-50%);
+    right:-50%;
+}
+}
+
+
+
+//venus
+.venus-orbit{
+    @include circle(13rem);
+}
+.venus-radius{
+    @include line(venus ,30s);
+    //planet
+    &::before{
+        @include line-before(100%,-50%,2rem,"Venus",blue );
+    }
+}
+
+//earth
+.earth-orbit{
+    @include circle(17rem);
+
+    .earth-radius{
+        @include line(earth ,40s);
+        //planet
+        &::before{
+            @include line-before(160%,-50%,2rem,"Earth",rgb(0, 255, 255) );
+        }
+    }
+}
+//mars
+.mars-orbit{
+    @include circle(20rem);
+
+    .mars-radius{
+        @include line(mars ,35s);
+        //planet
+        &::before{
+            @include line-before(200%,-50%,2rem,"Mars",rgb(192, 151, 151) );
+        }
+    }
+}
+//jupiter
+.jupiter-orbit{
+    @include circle(25rem);
+
+    .jupiter-radius{
+        @include line(jupiter ,42s);
+        //planet
+        &::before{
+            @include line-before(130%,-50%,3.5rem,"Jupiter",rgb(176, 153, 192) );
+        }
+    }
+}
+//saturn
+.saturn-orbit{
+
+    @include circle(29rem);
+
+    .saturn-radius{
+        @include line(saturn ,40s);
+        //planet
+        &::before{
+            @include line-before(240%,-50%,2.5rem,"Saturn",rgb(131, 88, 32) );
+        }
+    }
+}
+//uranus
+.uranus-orbit{
+    @include circle(35rem);
+
+    .uranus-radius{
+        @include line(uranus ,45s);
+        //planet
+        &::before{
+            @include line-before(380%,-50%,2rem,"Uranus",rgb(236, 192, 134) );
+        }
+    }
+    
+}
+//neptune
+.neptune-orbit {
+    @include circle(40rem);
+
+    .neptune-radius{
+        @include line(uranus ,50s);
+        //planet
+        &::before{
+            @include line-before(600%,-100%,1.5rem,"Neptune",rgb(194, 120, 25) );
+        }
+
+}
+}
